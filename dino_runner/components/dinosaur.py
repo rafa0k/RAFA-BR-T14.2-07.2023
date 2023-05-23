@@ -46,17 +46,17 @@ class Dinosaur:
         elif self.dino_duck:
             self.duck()
         
-        if self.step_count > 5:
+        if self.step_count > 9:
             self.step_count = 0
     
     def run(self):
-        self.image = RUNNING[self.step_count//3]
+        self.image = RUNNING[self.step_count//5]
         self.dino_rect.y = Y_POS
         
         self.step_count+=1
     
     def duck(self):
-        self.image = DUCKING[self.step_count//3]
+        self.image = DUCKING[self.step_count//5]
         self.dino_rect.y = Y_POS_DUCK
         
         self.step_count+=1
