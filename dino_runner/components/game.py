@@ -3,6 +3,7 @@ import random
 
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, CLOUD
 from dino_runner.components.dinosaur import Dinosaur
+from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 
 class Game:
     def __init__(self):
@@ -13,6 +14,7 @@ class Game:
         self.clock = pygame.time.Clock()
         
         self.player = Dinosaur()
+        self.obstacle_manager = ObstacleManager()
         
         self.playing = False
         self.game_speed = 20
@@ -41,6 +43,7 @@ class Game:
         
         user_input = pygame.key.get_pressed()
         self.player.update(user_input)
+        self.obstacle_manager.update(self)
         
 
     def draw(self):
@@ -49,6 +52,7 @@ class Game:
         self.draw_background()
         self.draw_simple_cloud()
         self.player.draw(self.screen)
+        self.obstacle_manager.draw(self.screen)
         
         pygame.display.flip()
 

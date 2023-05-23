@@ -30,10 +30,10 @@ class Dinosaur:
         elif user_input[pygame.K_LEFT]:
             self.dino_rect.x = self.dino_rect.x <= 0 and self.dino_rect.x or self.dino_rect.x - WALK
         
-        if user_input[pygame.K_UP]:
+        if user_input[pygame.K_UP] and self.dino_rect.y == Y_POS:
             self.dino_run = False
             self.dino_jump = True
-        if user_input[pygame.K_DOWN]:
+        elif user_input[pygame.K_DOWN]:
             self.dino_duck = True
             self.dino_run = False
         elif not self.dino_jump:
