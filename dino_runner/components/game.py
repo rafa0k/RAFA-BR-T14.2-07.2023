@@ -2,6 +2,10 @@ import pygame
 
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
 from dino_runner.components.dinosaur import Dinosaur
+from dino_runner.components.clouds import Clouds
+
+
+
 
 class Game:
     def __init__(self):
@@ -12,6 +16,8 @@ class Game:
         self.clock = pygame.time.Clock()
         
         self.player = Dinosaur()
+        self.cloud = Clouds()
+        self.cloud2 = Clouds()
         
         self.playing = False
         self.game_speed = 20
@@ -33,9 +39,10 @@ class Game:
                 self.playing = False
                 
     def update(self):
-        
         user_input = pygame.key.get_pressed()
         self.player.update(user_input)
+        self.cloud.update()
+        self.cloud2.update()
         
 
     def draw(self):
@@ -43,6 +50,8 @@ class Game:
         self.screen.fill((255, 255, 255))
         self.draw_background()
         self.player.draw(self.screen)
+        self.cloud.draw(self.screen)
+        self.cloud2.draw(self.screen)
         
         pygame.display.flip()
 
@@ -54,3 +63,4 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
+        
