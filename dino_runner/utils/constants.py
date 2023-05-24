@@ -8,6 +8,11 @@ SCREEN_WIDTH = 1100
 FPS = 30
 IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 
+FONT_STYLE = "freesansbold.ttf"
+
+#Constante obstaculos
+OBSTACLE_Y_POS = 325
+
 # Assets Constants
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
